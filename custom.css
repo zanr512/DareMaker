@@ -1,0 +1,24 @@
+.landing {
+    min-height: 450px;
+}
+
+
+
+.top-user{
+    padding: 5px 10px;
+    background-color: #242423;
+    color: #e8e8e8;
+}
+.top-user a{
+    color: aliceblue
+}
+.top-user-image{
+    height: 40px;
+    padding: 0;
+}
+
+.main-name{
+    font-family: "Kaushan Script", "Arial";
+    color: #04724d;
+    
+}
