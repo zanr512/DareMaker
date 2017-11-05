@@ -1,25 +1,106 @@
-.landing {
-    min-height: 450px;
+#mainNav {
+    font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    background: #2c3e50;
+    height: 90px;
 }
 
 
+header.masthead {
+    padding-top: 180px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #fff;
+    background: #18bc9c;
+    }
 
-.top-user{
-    padding: 5px 10px;
-    background-color: #242423;
+#siteName{
+    font-family: 'Kaushan Script', cursive;
+    color: #e8e8e8;
+    font-size: 35px;
+    
+}
+
+.landing-title{
+    font-family: 'Kaushan Script', cursive;
+    margin-bottom: 50px;
     color: #e8e8e8;
 }
-.top-user a{
-    color: aliceblue
-}
-.top-user-image{
-    height: 40px;
-    padding: 0;
+
+#landing-logo{
+    max-width: 500px;
 }
 
-.main-name{
-    font-family: "Kaushan Script", "Arial";
-    color: #04724d;
-    margin-top: 60px;
+#join-now{
+    border-radius: 1px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 8px;
+}
+
+.landing-desc{
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.fame-title{
+    text-align: center;
+    padding-top: 50px;
+    margin-bottom: 30px;
     
+}
+
+.fame-item{
+    border-width: 2px;
+    border-style: double;
+    margin:
+}
+
+.fame-name{
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+
+
+#gallery-head
+{
+    padding-top: 180px;
+    background-color: #18bc9c;
+    height: 450px;;  
+}
+
+
+
+#search-dare{
+    width: 70%;
+    font-size: 30px;
+    padding-left: 15px;
+    font-weight: 3390;
+}
+
+#gallery-srch-btn{
+    width: 200px;
+    margin-top: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+
+#gallery-item-img{
+    max-width: 300px;
+
+}
+
+.gallery-item{
+    border-style: solid;
+    border-width: 2px;
 }

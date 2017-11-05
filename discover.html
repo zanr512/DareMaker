@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>DISCOVER</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <title>DareMaker</title>
 </head>
+
 <body>
 
-<h1>HELLO WORLD!</h1>
-<p>This is a paragraph1.</p>
-
-</body>
-</html>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" id="siteName"  href="#page-top">Daremaker</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger active" href="discover.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="profile.html">My profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="continer-fluid" id="gallery-head">
+        <div class="container">
+            <div class="text-center">
+                <input type="text" id="search-dare">
+            </div>
+            <div class="text-center">
+            <a class="btn btn-primary btn-lg" id="gallery-srch-btn">LETS GO</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="d-flex flex-column">
+            <div class="p-2 gallery-item">
+                <div class="">
+                    <img src="images/default_user.png" class="img-fluid" id="gallery-item-img">
+                    <p></p>
+                </div>
+                
+            </div>
+            <div class="p-2 gallery-item">
+                <div class="">
+                    <img src="images/default_user.png" class="img-fluid" id="gallery-item-img">
+                    <p></p>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
