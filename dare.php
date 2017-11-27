@@ -24,6 +24,14 @@
     <!-- Custom styles for this template 
     <link href="css/blog-post.css" rel="stylesheet">
     -->
+    <script>
+    function toggledisplay(elementID)
+    {
+        (function(style) {
+            style.display = style.display === 'none' ? '' : 'none';
+        })(document.getElementById(elementID).style);
+    }
+    </script>
     <style type="text/css">
       #points{
         background-color: #feb657;
@@ -184,7 +192,11 @@
 
           <!-- Post Content -->
           <div class="lead" style="white-space: pre-line;"><?php echo $desc; ?></div>
-
+          <br>
+          <div class="row">
+            <div class="col-2 offset-10" style="text-align: right;">
+              <a href="" >EDIT</a></div>
+          </div>
           <hr>
           <div class="row">
             <div class="col-4">
@@ -197,9 +209,36 @@
                 </ul>
               </div>
             </div>
+
             <div class="col-4 offset-4">
-              <button type="submit" style="float: right;" class="btn btn-primary">CHALLANGE IT!</button>
+              <button type="submit" style="float: right;" onClick="toggledisplay('chall_form');" class="btn btn-primary">CHALLANGE IT!</button>
             </div>
+          </div>
+           <div class="card my-4" id="chall_form" style="display: none;">
+            <div class="card-body">
+              <form action="php/challenge_create.php?did=<?php echo $dare_id; ?>" method="Post" id="challenge" enctype="multipart/form-data">
+               <div class="row">
+                <div class="col-2" style="margin-bottom: 10px;">
+                  Proof:
+                </div>
+                <div class="col-10" style="margin-bottom: 10px;">
+                  <input type="text" placeholder="link" name="link"> or <input type="file" name="fileToUpload" id="fileToUpload">
+                </div>
+                <div class="col-2">
+                  Text:
+                </div>
+                <div class="col-10">
+                  <textarea maxlength="100" class="form-control" name="comm" rows="3" form="challenge"></textarea>
+                </div>
+               </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+          <br>
+          <!-- Challenges -->
+          <div class="row" style="margin-left: 0px;">
+           <?php include_once 'show_challenges.php'; ?>
           </div>
           <hr>
           <!-- Comments Form -->
