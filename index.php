@@ -22,6 +22,19 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
+    <!---JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      $( document ).ready(function(){
+        $('.tabs a').click(function () {
+          $('li.tabs').removeClass('active');
+
+          $(this).closest('li.tabs').addClass('active');
+        });
+      });
+    </script>
+
 
     <style type="text/css">
       .badge{
@@ -39,7 +52,6 @@
       #exTab1 .tab-content {
         color : white;
         background-color: #feac3f;
-        padding : 5px 15px;
         height: 360px;
       }
 
@@ -103,46 +115,51 @@
       <!-- Page Features -->
       <div class="row text-center">
         <div class="col-md-8" id="exTab1">
-          <ul  class="nav nav-pills">
-            <li class="active" style="width: 24%;">
-              <a  href="#1a" data-toggle="tab">TRENDING</a>
+          <ul  class="nav nav-pills top">
+            <li class="tabs active" style="width: 24%;">
+              <a  href="#1a" data-toggle="tab">TOP<br>DARES</a>
             </li>
-            <li style="width: 24%;"><a href="#2a" data-toggle="tab">HOT</a>
+            <li style="width: 24%;" class="tabs">
+              <a href="#2a" data-toggle="tab">NEW<br>DARES</a>
             </li>
-            <li style="width: 24%;"><a href="#3a" data-toggle="tab">RATED</a>
+            <li style="width: 24%;" class="tabs">
+              <a href="#3a" data-toggle="tab">TOP<br>CHALLANGES</a>
             </li>
-            <li style="width: 24%;"><a href="#4a" data-toggle="tab">NEWEST</a>
+            <li style="width: 24%;" class="tabs">
+              <a href="#4a" data-toggle="tab">NEW<br>CHALLANGES</a>
             </li>
           </ul>
 
             <div class="tab-content clearfix">
               <div class="tab-pane active" id="1a">
-                <h3>Content's background color is the same for the tab</h3>
+                <?php
+                  include_once "show_best_dares.php";
+                ?>
               </div>
               <div class="tab-pane" id="2a">
-                <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+                <?php
+                  include_once "show_new_dares.php";
+                ?>
               </div>
               <div class="tab-pane" id="3a">
-                <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+                <?php
+                  include_once "show_best_chall.php";
+                ?>
               </div>
                 <div class="tab-pane" id="4a">
-                <h3>We use css to change the background color of the content to be equal to the tab</h3>
+                <?php
+                  include_once "show_new_chall.php";
+                ?>
               </div>
             </div>
         </div>
         <div class="col-md-4">
           <ul class="list-group">
+            <br>
             <b style="padding: 10px; color: #f16000; text-decoration: underline;">THE BRAVEST OF THEM ALL</b>
-            <li class="list-group-item" style="background-color: #fe9810">1. AlashTheAdmin <span class="badge">9000+</span></li>
-            <li class="list-group-item" style="background-color: #fea227">2. Deleted <span class="badge">5</span></li> 
-            <li class="list-group-item" style="background-color: #feac3f">3. Warnings <span class="badge">3</span></li>
-            <li class="list-group-item">4. Deleted <span class="badge">5</span></li> 
-            <li class="list-group-item">5. Warnings <span class="badge">3</span></li> 
-            <li class="list-group-item">6. Deleted <span class="badge">5</span></li> 
-            <li class="list-group-item">7. Warnings <span class="badge">3</span></li> 
-            <li class="list-group-item">8. Deleted <span class="badge">5</span></li> 
-            <li class="list-group-item">9. Warnings <span class="badge">3</span></li>
-            <li class="list-group-item">10. Deleted <span class="badge">5</span></li>    
+            <?php
+              include_once "show_best_users.php";
+            ?> 
           </ul>
         </div>
 

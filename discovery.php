@@ -18,10 +18,44 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="vendor/bootstrap/nav/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link href="css/list_view.css" rel="stylesheet">
+    <script>
+        $(document).ready(function(){
+            $("#grid").click(function(event){
+                event.preventDefault();
+                $(".izziv").removeClass("list-group-item");
+                $(".izziv").addClass("col-lg-4");
+                
+                $(".izziv").addClass("grid");
+                $(".izziv").addClass("grid-item");
+                $(".izziv").removeClass("list");
+                
+                $(".opis").hide();
+                
+                $("#glavna").removeClass("list-group");
+                $("#glavna").addClass("row");
+            });
+            $("#list").click(function(event){
+                event.preventDefault();
+                $(".izziv").removeClass("col-lg-4");
+                $(".izziv").addClass("list-group-item");
+                
+                $(".opis").show();
+                $(".izziv").removeClass("grid-item");
+                
+                $(".izziv").addClass("list");
+                $(".izziv").removeClass("#grid");
+                
+                $("#glavna").removeClass("row");
+                $("#glavna").addClass("list-group");
+            });
+        });
+      </script>
 
     <style type="text/css">
       .badge{
@@ -77,7 +111,7 @@
     </style>
 
   </head>
-
+    
   <body>
 
     <!-- Navigation -->
@@ -87,79 +121,154 @@
 
     <!-- Page Content -->
     <div class="container">
-      <div class="col-md-4">
+      <div class="col-4">
         <input type="text" name="search" placeholder="Search..">
       </div>
-
-      <div class="row text-center text-lg-left">
-
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
+      <div class="col" style="margin-bottom:20px;">
+          <button class="btn btn-lg" id="list">
+            <i class="fa fa-list" aria-hidden="true">   LIST</i>
+        </button>
+        <button class="btn btn-lg"  id="grid">
+            <i class="fa fa-th" aria-hidden="true">   GRID</i>
+        </button>
       </div>
 
-    </div>
+      <div class="list-group" id="glavna">
+
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            <div class="list-group-item list-group-item-action izziv list" style="">
+                  <div class="row">
+                      <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                      <div class="desc col">
+                          <p class="display-4 title">Title</p>
+                            <p class="lead opis">
+                                 Lorem ipsum dolor sit amet, quo case utamur percipit eu, eum movet postulant adipiscing eu. Choro placerat sadipscing ut ius, cum viris sapientem conclusionemque an. Ridens civibus praesent id cum. Ex quo dicant euismod.
+                             </p>
+                             <p class="score display-4">
+                                 <i class="fa fa-star" aria-hidden="true">  5000</i>
+                             </p>
+                      </div>
+                  </div>
+            </div>
+            
+            
+        </div>
+      </div>
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark" style="margin-top:30px;">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
       </div>

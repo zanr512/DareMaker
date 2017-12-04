@@ -1,57 +1,67 @@
-.glyphicon { margin-right:5px; }
-.thumbnail
+.title, .score
 {
+    color: #FE9810;
+}
+
+
+.opis
+{
+    margin-left: 5px;
+    border-left: 5px;
+    border-left-color: #ECEEEF;
+    border-left-style: solid;
+    padding-left: 5px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+   
+}
+
+.grid-item
+{
+    margin-right: auto;
+    border: 1px solid #FE9810;
     margin-bottom: 20px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
 }
 
-.item.list-group-item
+
+
+.grid-item img
 {
-    float: none;
     width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-}
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
-    background: #428bca;
+    height: auto;
+    margin-left: auto;
+
 }
 
-.item.list-group-item .list-group-image
+.grid-item p
 {
-    margin-right: 10px;
-}
-.item.list-group-item .thumbnail
-{
-    margin-bottom: 0px;
-}
-.item.list-group-item .caption
-{
-    padding: 9px 9px 0px 9px;
-}
-.item.list-group-item:nth-of-type(odd)
-{
-    background: #eeeeee;
+    text-align: center;
 }
 
-.item.list-group-item:before, .item.list-group-item:after
+.grid-item span
 {
-    display: table;
-    content: " ";
+   text-align: center;
 }
 
-.item.list-group-item img
+.score
 {
-    float: left;
 }
-.item.list-group-item:after
+
+.grid{
+    
+}
+
+.list
 {
-    clear: both;
+   padding-left: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+     border: 2px solid #FE9810;
 }
-.list-group-item-text
+
+.list
 {
-    margin: 0 0 11px;
+    margin-top: 20px;
 }
+
+

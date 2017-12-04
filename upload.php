@@ -35,25 +35,19 @@
       .list-group-item{
         text-align: left;
       }
-
       #exTab1 .tab-content {
         color : white;
         background-color: #eb9950a1;
         padding : 5px 15px;
         height: 360px;
       }
-
-
       /* remove border radius for the tab */
-
       #exTab1 .nav-pills > li > a {
         border-radius: 0;
       }
-
       .nav-pills li{
         font-weight: bold;
       }
-
     </style>
 
   </head>

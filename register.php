@@ -63,7 +63,7 @@
 
     <!-- Page Content -->
     <div class="container">
-      <div class="row" style="margin-bottom: 100px;">
+      <div class="row" style="margin-bottom: 50px;">
          <div class="col-xs-12 col-md-4" style="margin: 20px auto; border: 1px solid #f16000; border-radius: 5px; padding: 10px;">
           <form method="post" action="php/user_login.php">
            <div class="form-group " style="padding: 10px;">
@@ -119,7 +119,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark" style="position: fixed; bottom: 0; width: 100%;">
+    <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
       </div>

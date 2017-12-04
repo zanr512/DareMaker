@@ -9,7 +9,7 @@
 	$name = $_POST["name"];
 	$surname = $_POST["surname"];
 
-	$picture = "users/default.png";
+	$picture = "default.png";
 	
 	$query = sprintf("SELECT * FROM users WHERE email = '$email'");
 	$result = mysqli_query($conn, $query);

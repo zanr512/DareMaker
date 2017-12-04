@@ -22,6 +22,20 @@
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="vendor/bootstrap/nav/bootstrap.min.css" rel="stylesheet">
 
+    <!---JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      $( document ).ready(function(){
+        $('.tabs a').click(function () {
+          $('li.tabs').removeClass('active');
+
+          $(this).closest('li.tabs').addClass('active');
+        });
+      });
+    </script>
+
+
     <!-- Custom styles for this template 
     <link href="css/blog-post.css" rel="stylesheet">
     -->
@@ -137,7 +151,6 @@
         color : #feac3f;
         border: solid 1px #feac3f;
         /* background-color: #feac3f; */
-        padding : 5px 15px;
         min-height: 100px;
       }
 
@@ -267,6 +280,7 @@
                       </td>
                     <?php } ?>
                   </tr>
+                  <tr>
                     <td>
                       <b>Last name:</b>
                     </td>
@@ -279,6 +293,20 @@
                       </td>
                     <?php } ?>
                   </tr>
+                  <tr>
+                    <td>
+                      <b>Gender:</b>
+                    </td>
+                    <td>
+                      <?php echo $gender; ?>
+                    </td>
+                    <?php if($user_id == $uid){ ?>
+                      <td>
+                        <a href="#"><img src="resc/edit.png" style="width: 20px;"></a>
+                      </td>
+                    <?php } ?>
+                  </tr>
+                  <tr>
                     <td>
                       <b>Email:</b>
                     </td>
@@ -309,12 +337,12 @@
             <hr>
             <div class="col-12" id="exTab1" style="padding: 0">
               <ul  class="nav nav-pills">
-                <li class="active" style="width: 33%;">
+                <li class="tabs active" style="width: 33%;">
                   <a  href="#1a" data-toggle="tab">FOLLOWING</a>
                 </li>
-                <li style="width: 33%;"><a href="#3a" data-toggle="tab">DARES</a>
+                <li style="width: 33%;" class="tabs"><a href="#3a" data-toggle="tab">DARES</a>
                 </li>
-                <li style="width: 32%;"><a href="#4a" data-toggle="tab">CHALLENGES</a>
+                <li style="width: 32%;" class="tabs"><a href="#4a" data-toggle="tab">CHALLENGES</a>
                 </li>
               </ul>
               <!--
@@ -330,81 +358,20 @@
 
             -->
                 <div class="tab-content clearfix">
-                  <div class="tab-pane active" id="1a">
+                  <div class="tab-pane active" style="padding: 5px 15px" id="1a">
                     <?php
-                        $query = sprintf("SELECT * FROM friends WHERE user1_id = '$user_id'");
-                        $result = mysqli_query($conn, $query);
-                        
-                        if (mysqli_num_rows($result) == 0) {
-                          echo "<h3>User doesn't follow anybody yet!</h3>";
-                        }
+                      include_once "user_follow.php";                      
                     ?>
-                    <br>
-                    <div class="row">
-                      
-                        <?php
-                        while($row = $result->fetch_assoc()){
-                          $cid = $row["id"];
-                          if($user_id == $row["user1_id"]){
-                            $rid = $row["user2_id"];
-                          }
-                          else{
-                            $rid = $row["user1_id"];
-                          }
-                          $by = "test";
-                          $que = sprintf("SELECT * FROM users WHERE id = ".$rid);
-                          $res = mysqli_query($conn, $que);
-                          if (mysqli_num_rows($res) == 1) {
-                            //vse ok
-                            $user = mysqli_fetch_array($res);
-                            $by = $user["username"];
-                            $pic = $user["picture"];
-                            $fscore = $user["score"];
-                          } 
-                      ?>
-                      <div class="col-6 col-md-4">
-                        <div class="row" style="margin: -10px; border: #ffe3be solid 1px; border-radius: 3px;">
-                          <div class="col-4" style="padding: 0;">
-                            <img src="img/<?php echo $pic?>" class="img-responsive" />
-                          </div>
-                          <div class="col-8" style="padding: 10px;">
-                            <div class="media-body">
-                              <table>
-                                <tr>
-                                  <td>
-                                    <h5><a href="user.php?id=<?php echo $rid; ?>"><?php echo $by; ?></a>
-                                    </h5>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td style="color: black;">
-                                    Points: <?php echo $fscore; ?>
-                                  </td>
-                                </tr>
-                                <?php if($uid == $user_id){ ?>
-                                <tr>
-                                  <td>
-                                    <a href="#" style="font-size: 10px;">UNFRIEND</a>
-                                  </td>
-                                </tr>
-                                <?php } ?>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <?php } ?>
-                    </div>
-                    <br>
                   </div>
-                  <div class="tab-pane" id="2a">
-                    <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+                  <div class="tab-pane"  id="3a">
+                    <?php
+                      include_once "user_dares.php";
+                    ?>
                   </div>
-                  <div class="tab-pane" id="3a">
-                    <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
-                  </div>
-                    <div class="tab-pane" id="4a">
-                    <h3>We use css to change the background color of the content to be equal to the tab</h3>
+                  <div class="tab-pane" id="4a">
+                    <?php
+                      include_once "user_chall.php";
+                    ?>
                   </div>
                 </div>
             </div>
@@ -432,7 +399,9 @@
           <div class="card my-4">
             <h5 class="card-header">Other</h5>
             <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+              <?php
+                include_once "similar_users.php";
+              ?>
             </div>
           </div>
 

@@ -46,6 +46,7 @@ if (mysqli_num_rows($result) == 0) {
 
 		    mysqli_query($conn,"INSERT INTO dare_users (user_id, dare_id,completed,link,cha_text) 
 		        VALUES ('$uid','$dare_id',0,'$file_name','$text')");
+		    mysqli_query($conn,"UPDATE dares SET count = count + 1 WHERE id = '$dare_id'");
 
 	    } else {
 	        echo "Sorry, there was an error uploading your file. #".$_FILES["fileToUpload"]["error"];
@@ -56,6 +57,7 @@ if (mysqli_num_rows($result) == 0) {
 		
 		mysqli_query($conn,"INSERT INTO dare_users (user_id, dare_id,completed,link,cha_text) 
 		        VALUES ('$uid','$dare_id',0,'$link','$text')");
+		mysqli_query($conn,"UPDATE dares SET count = count + 1 WHERE id = '$dare_id'");
 	}
 
 

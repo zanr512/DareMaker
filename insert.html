@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="UTF-8">
+	<title>INSERT</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style type="text/css">
+		.col-xs-12{
+			padding: 0;
+		}
+
+		.col-xs-2{
+			margin: 10px 0;
+			padding: 0;
+		}
+		.col-xs-2 input{
+			width: 90%;
+		}
+		.col-xs-2 textarea{
+			width: 90%;
+			max-width: 90%;
+		}
+		.col-xs-12 input{
+			width: 75%;
+			margin-left: 15px;
+			margin-bottom: 5px;
+		}
+	</style>
+
+	<script>
+	$(document).ready(function(){
+		for(var a=1;a<7;a++){
+			var iz = "#sw"+a;
+			$(iz).hide();
+		}
+
+		$('#da1').change(function(){
+			$('#sw1').toggle();
+		});
+		$('#da2').change(function(){
+			$('#sw2').toggle();
+		});
+		$('#da3').change(function(){
+			$('#sw3').toggle();
+		});
+		$('#da4').change(function(){
+			$('#sw4').toggle();
+		});
+		$('#da5').change(function(){
+			$('#sw5').toggle();
+		});
+		$('#da6').change(function(){
+			$('#sw6').toggle();
+		});
+
+		$('#gen').click(function(){
+			if($('#ent').val() != ""){
+				$('#rez').html("");
+				var spr = 0;
+				for(var x = 1; x<7; x++){
+					var c_id = "#pr"+x;
+					if($(c_id).val()==""){
+						break;
+					}
+					spr = x + 1;
+				}
+				var stev = $('#st').val();
+				for(var x = 0; x < stev; x++){
+					var rez = "INSERT INTO " + $('#ent').val() +" (";
+					for(var y=1;y<spr;y++){
+						var iz = "#pr"+y;
+						rez = rez + $(iz).val();
+						if(y<spr-1){
+							rez = rez + ", ";
+						}
+					}
+					rez = rez + ") VALUES (";
+					
+					for(var z=1;z<spr;z++){
+						var da = "#da"+z;
+						if($(da).is(':checked')){
+							var ti = "#ti"+z;
+							if($(ti).is(':checked')){
+								var dan = Math.floor(Math.random() * 28) + 1;
+								if(dan<10){
+									dan= "0" +dan;
+								}
+								var mesec = Math.floor(Math.random() * 12) + 1;
+								if(mesec<10){
+									mesec= "0" +mesec;
+								}
+								var ura = Math.floor(Math.random() * 12) + 1;
+								if(ura<10){
+									ura= "0" +ura;
+								}
+								var minuta = Math.floor(Math.random() * 60);
+								if(minuta<10){
+									minuta= "0" +minuta;
+								}
+								var sekunda = Math.floor(Math.random() * 60);
+								if(sekunda<10){
+									sekunda= "0" +sekunda;
+								}
+								var pop = Math.floor(Math.random() *2);
+								if(pop == 1){
+									pop = "PM";
+								}else{
+									pop = "AM";
+								}
+								var za = '#za'+z;
+								var ko = '#ko'+z;
+								var raz = parseInt($(ko).val()) - parseInt($(za).val());
+								var leto = Math.floor(Math.random() * raz) + parseInt($(za).val());
+								rez = rez +"'"+ leto+mesec+dan+" "+ura+":"+minuta+":"+sekunda+" "+pop+"'";		
+							}
+							else{
+								rez=rez + "DATE '";
+								var dan = Math.floor(Math.random() * 28) + 1;
+								var mesec = Math.floor(Math.random() * 12) + 1;
+								var za = '#za'+z;
+								var ko = '#ko'+z;
+								var raz = parseInt($(ko).val()) - parseInt($(za).val());
+								var leto = Math.floor(Math.random() * raz) + parseInt($(za).val());
+								rez = rez + leto+"-"+mesec+"-"+dan+"'";								
+							}
+						}
+						else{
+							var iz = "#op"+z;
+							var data =$(iz).val();
+							var arr = data.split(',');
+							var dol = 0;
+						    for ( var indx in arr ) {
+						        dol ++;
+						    }
+							var rand = Math.floor(Math.random() * dol);
+							if($.isNumeric(arr[0])){
+								rez = rez + arr[rand];
+
+							}else{
+								rez = rez + "'" + arr[rand] +"'";
+
+							}
+						}
+						if(z<spr-1){
+							rez = rez + ", ";
+						}
+					}
+					
+					rez = rez + ");";
+					$('#rez').append(rez+"<br>");
+				}
+			}
+			else{
+				alert("Ime entitete ne sme bit prazno!");
+			}
+		});
+
+	});
+	</script>
+
+</head>
+<body>
+	<div class="container">
+		<hr>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="col-xs-12">
+					<div class="col-xs-2">
+						Ime entitete:
+					</div>
+					<div class="col-xs-2">
+						<input type="text" name="ent" id="ent">
+					</div>
+				</div>
+				<div class="col-xs-12">Atributi:</div>
+				<div class="col-xs-2">
+					<input type="text" name="pr1" id="pr1">
+				</div>
+				<div class="col-xs-2">
+					<input type="text" name="pr2" id="pr2">
+				</div>
+				<div class="col-xs-2">
+					<input type="text" name="pr3" id="pr3">
+				</div>
+				<div class="col-xs-2">
+					<input type="text" name="pr4" id="pr4">
+				</div>
+				<div class="col-xs-2">
+					<input type="text" name="pr5" id="pr5">
+				</div>
+				<div class="col-xs-2">
+					<input type="text" name="pr6" id="pr6">
+				</div>
+				<div class="col-xs-12">Možnosti: (loči z vejico)</div>
+				<div class="col-xs-2">
+					<textarea name="op1" id="op1"></textarea>
+				</div>
+				<div class="col-xs-2">
+					<textarea name="op2" id="op2"></textarea>
+				</div>
+				<div class="col-xs-2">
+					<textarea name="op3" id="op3"></textarea>
+				</div>
+				<div class="col-xs-2">
+					<textarea name="op4" id="op4"></textarea>
+				</div>
+				<div class="col-xs-2">
+					<textarea name="op5" id="op5"></textarea>
+				</div>
+				<div class="col-xs-2">
+					<textarea name="op6" id="op6"></textarea>
+				</div>
+				<!-- DATUM  -->
+				<div class="col-xs-12">*Datum: ([začetek]-[konec]) </div>
+				<div class="col-xs-2">
+					<div class="row">
+						<div class="col-xs-12">
+							<input type="checkbox" name="da1" id="da1">
+						</div>
+						<div class="col-xs-12" id="sw1">
+							<input type="text" name="za1" id="za1" placeholder="1900"><br>
+							<input type="text" name="ko1" id="ko1" placeholder="2017">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="row">
+						<div class="col-xs-12">
+							<input type="checkbox" name="da2" id="da2">
+						</div>
+						<div class="col-xs-12" id="sw2">
+							<input type="text" name="za2" id="za2"><br>
+							<input type="text" name="ko2" id="ko2">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="row">
+						<div class="col-xs-12">
+							<input type="checkbox" name="da3" id="da3">
+						</div>
+						<div class="col-xs-12" id="sw3">
+							<input type="text" name="za3" id="za3"><br>
+							<input type="text" name="ko3" id="ko3">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="row">
+						<div class="col-xs-12">
+							<input type="checkbox" name="da4" id="da4">
+						</div>
+						<div class="col-xs-12" id="sw4">
+							<input type="text" name="za4" id="za4"><br>
+							<input type="text" name="ko4" id="ko4">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="row">
+						<div class="col-xs-12">
+							<input type="checkbox" name="da5" id="da5">
+						</div>
+						<div class="col-xs-12" id="sw5">
+							<input type="text" name="za5" id="za5"><br>
+							<input type="text" name="ko5" id="ko5">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="row">
+						<div class="col-xs-12">
+							<input type="checkbox" name="da6" id="da6">
+						</div>
+						<div class="col-xs-12" id="sw6">
+							<input type="text" name="za6" id="za6"><br>
+							<input type="text" name="ko6" id="ko6">
+						</div>
+					</div>
+				</div>
+				<!-- ČAS -->
+				<div class="col-xs-12 cas">*Čas: (Obvezen datum)</div>
+				<div class="col-xs-2 cas">
+					<input type="checkbox" name="ti1" id="ti1">
+				</div>
+				<div class="col-xs-2 cas">
+					<input type="checkbox" name="ti2" id="ti2">
+				</div>
+				<div class="col-xs-2 cas">
+					<input type="checkbox" name="ti3" id="ti3">
+				</div>
+				<div class="col-xs-2 cas">
+					<input type="checkbox" name="ti4" id="ti4">
+				</div>
+				<div class="col-xs-2 cas">
+					<input type="checkbox" name="ti5" id="ti5">
+				</div>
+				<div class="col-xs-2 cas">
+					<input type="checkbox" name="ti6" id="ti6">
+				</div>
+
+				<div class="col-xs-12">
+					<div class="col-xs-2">
+						Število rezultatov:
+					</div>
+					<div class="col-xs-2">
+						<input type="number" name="st" id="st" value="5">
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="col-xs-2">
+						<button type="submit" class="btn btn-default" id="gen">GENERIRAJ</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-12" id="rez">
+				
+			</div>
+		</div>
+		<hr>
+	</div>
+</body>
+</html>
